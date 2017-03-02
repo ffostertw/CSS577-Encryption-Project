@@ -1,0 +1,62 @@
+#! /bin/bash
+# Scripting for 527 Project 2 (HMAC-SHA256) by Kevin Wu.
+clear
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo "Start Execute Kevin's CSS577 project."
+echo "This is a script perform 3des, aes128, aes256  with sha256, sha512."
+
+while true; do 
+echo " "
+echo "Enter "d" to set password as default password. "
+echo "or enter your password and press [ENTER]:"
+echo "Note: password should be over 8 characters."
+
+read password
+size=${#password}
+if [[ -z $password ]]; then
+  echo "Please enter your password."
+elif [ $password == "d" ]; then
+  break
+elif [ $size -le 8 ]; then
+  echo "Password not long enough, Please re-enter password."
+else
+break
+fi
+done
+
+if [ $password == "d" ] ; then
+   java Main d password.txt
+else 
+   java Main $password password.txt
+fi
+
+
+echo "Enter the hashing function(sha256 or sha512): "
+read hash
+
+echo "Enter the encryption function(3des or aes128 or aes256): "
+read encrypt
+
+
+if [ $hash  == "sha256" ] && [ $encrypt == "3des" ]; then
+  echo " sha245"
+elif [ $hash  == "sha256" ] && [ $encrypt == "aes128" ]; then
+ ech "sha256"
+else
+  echo "Bad input, please try again."
+ echo " "
+ echo " "
+fi
+
+
+echo " "
+echo " FINISH"
+
+
+
+
+
+
+
+
